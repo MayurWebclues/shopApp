@@ -1,3 +1,4 @@
+import 'package:cluesapps/screens/cart_screen.dart';
 import 'package:cluesapps/widgets/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +54,9 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
             ),
             child: IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName, arguments: {});
+              },
             ),
           )
         ],

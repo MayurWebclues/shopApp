@@ -1,4 +1,5 @@
 import 'package:cluesapps/providers/p_products.dart';
+import 'package:cluesapps/widgets/appdrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class ProductDetails extends StatelessWidget {
             ),
             Text(
               'Price : \$${items.price}',
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 20,
                   fontFamily: 'Lato',
@@ -47,7 +48,7 @@ class ProductDetails extends StatelessWidget {
                   fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -55,7 +56,7 @@ class ProductDetails extends StatelessWidget {
               width: double.infinity,
               child: Text(
                 items.description,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontFamily: 'Anton',
@@ -68,6 +69,7 @@ class ProductDetails extends StatelessWidget {
           ],
         ),
       ),
+      drawer: AppDrawer(),
     );
   }
 }

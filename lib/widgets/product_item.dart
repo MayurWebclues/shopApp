@@ -15,7 +15,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<ProductModel>(context);
-    var addItemToCart  =Provider.of<CartProvider>(context);
+    var cardData = Provider.of<CartProvider>(context);
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: GestureDetector(
@@ -48,9 +48,26 @@ class ProductItem extends StatelessWidget {
             trailing: IconButton(
               color: Theme.of(context).primaryColor,
               onPressed: () {
-                addItemToCart.addCartItem(data.id, data.title, data.price);
+                cardData.addCartItem(data.id, data.title, data.price);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: const Text(
+                        'Item Added To Cart!',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Colors.redAccent),
+                      ),
+                      duration: const Duration(seconds: 2),
+                      action: SnackBarAction(
+                        onPressed: () {
+                          cardData.removeSingleITem(data.id);
+                        },
+                        label: 'UNDO',
+                      )),
+                );
               },
-              icon: Icon(Icons.shopping_cart),
+              icon: const Icon(Icons.shopping_cart),
             ),
           ),
         ),

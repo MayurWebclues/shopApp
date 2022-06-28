@@ -1,4 +1,5 @@
 import 'package:cluesapps/screens/cart_screen.dart';
+import 'package:cluesapps/widgets/appdrawer.dart';
 import 'package:cluesapps/widgets/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -63,10 +64,11 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
         title: Text('Home'),
         centerTitle: true,
       ),
+      drawer: AppDrawer(),
       body: Container(
         child: ProductGrids(_showFavoriteOnly),
       ),
-      drawer: Drawer(),
+
     );
   }
 }

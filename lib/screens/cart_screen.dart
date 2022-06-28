@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/p_cart.dart';
+import '../providers/p_orders.dart';
 import '../widgets/cartitem.dart';
 
 class CartScreen extends StatelessWidget {
@@ -35,7 +36,12 @@ class CartScreen extends StatelessWidget {
                     width: 10,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Provider.of<OrdersProvider>(context, listen: false)
+                            .addOrder(cardProvide.Items.values.toList(),
+                                cardProvide.totalAmount);
+                        cardProvide.clearCart();
+                      },
                       child: Text(
                         'ORDER NOW',
                         style: Theme.of(context).textTheme.titleSmall,
@@ -47,11 +53,11 @@ class CartScreen extends StatelessWidget {
           Expanded(
               child: ListView.builder(
             itemBuilder: (ctx, index) => CartItems(
-              id: cardProvide.Items.values.toList()[index]!.id,
+              id: cardProvide.Items.values.toList()[index].id,
               productId: cardProvide.Items.keys.toList()[index],
-              title: cardProvide.Items.values.toList()[index]!.title,
-              price: cardProvide.Items.values.toList()[index]!.price,
-              quantity: cardProvide.Items.values.toList()[index]!.quantity,
+              title: cardProvide.Items.values.toList()[index].title,
+              price: cardProvide.Items.values.toList()[index].price,
+              quantity: cardProvide.Items.values.toList()[index].quantity,
             ),
             itemCount: cardProvide.Items.length,
           ))

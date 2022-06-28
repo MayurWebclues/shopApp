@@ -1,6 +1,8 @@
 import 'package:cluesapps/providers/p_cart.dart';
+import 'package:cluesapps/providers/p_orders.dart';
 import 'package:cluesapps/providers/p_products.dart';
 import 'package:cluesapps/screens/cart_screen.dart';
+import 'package:cluesapps/screens/order_screen.dart';
 import 'package:cluesapps/screens/product_detail_screen.dart';
 import 'package:cluesapps/screens/product_overview_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OrdersProvider(),
         ),
       ],
       child: MaterialApp(
@@ -47,6 +52,7 @@ class MyApp extends StatelessWidget {
           '/': (ctx) => ProductOverViewScreen(),
           ProductDetails.routeName: (ctx) => ProductDetails(),
           CartScreen.routeName: (ctx) => CartScreen(),
+          OrderScreen.routeName: (ctx) => OrderScreen(),
         },
       ),
     );
